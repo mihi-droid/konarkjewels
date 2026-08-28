@@ -29,22 +29,15 @@ export function Navbar() {
           </svg>
         </button>
 
-        <Link href="/" className="group inline-flex items-center gap-2.5 text-ink">
-          <span className="relative h-10 w-10 overflow-hidden rounded-full border border-gold/40 bg-ink sm:h-11 sm:w-11">
-            <Image
-              src={KONARK_LOGO_URL}
-              alt={KONARK_LOGO_ALT}
-              fill
-              sizes="44px"
-              className="object-cover transition-transform duration-500 ease-premium group-hover:scale-105"
-            />
-          </span>
-          <span className="leading-none">
-            <span className="block font-display text-xl tracking-[0.2em] sm:text-2xl">KONARK</span>
-            <span className="hidden text-[10px] uppercase tracking-[0.22em] text-gold-dark sm:block">
-              Heritage Jewels
-            </span>
-          </span>
+        <Link href="/" className="group inline-flex items-center text-ink">
+          <Image
+            src={KONARK_LOGO_URL}
+            alt={KONARK_LOGO_ALT}
+            width={180}
+            height={60}
+            priority
+            className="h-auto w-[120px] transition-transform duration-500 ease-premium group-hover:scale-[1.02] sm:w-[155px]"
+          />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-8" aria-label="Primary">
