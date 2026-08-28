@@ -15,6 +15,7 @@ import type { ProductSummary } from "@/lib/types";
 export function ProductCard({ product }: { product: ProductSummary }) {
   const [hovering, setHovering] = useState(false);
   const addItem = useCartStore((s) => s.addItem);
+  const RECENTLY_VIEWED_KEY = "konark.recentlyViewed";
 
   const primary = product.images[0];
   const hover = product.images.find((i) => i.isHover) ?? product.images[1];
@@ -23,12 +24,24 @@ export function ProductCard({ product }: { product: ProductSummary }) {
 
   return (
     <div
-      className="group relative"
+      className="group relative transition-transform duration-500 ease-premium hover:-translate-y-1"
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
     >
-      <Link href={`/products/${product.slug}`} className="block">
-        <div className="relative aspect-[4/5] overflow-hidden bg-parchment">
+      <Link
+        href={`/products/${product.slug}`}
+        className="block"
+        onClick={() => {
+          try {
+            const raw = window.localStorage.getItem(RECENTLY_VIEWED_KEY);
+            const parsed = raw ? (JSON.parse(raw) as unknown) : [];
+            const recent = Array.isArray(parsed) ? parsed.filter((id): id is string => typeof id === "string") : [];
+            const next = [product.id, ...recent.filter((id) => id !== product.id)].slice(0, 8);
+            window.localStorage.setItem(RECENTLY_VIEWED_KEY, JSON.stringify(next));
+          } catch {}
+        }}
+      >
+        <div className="relative aspect-[4/5] overflow-hidden border border-border/70 bg-parchment shadow-card transition-all duration-500 ease-premium group-hover:border-gold/50 group-hover:shadow-card-hover">
           {primary && (
             <Image
               src={hovering && hover ? hover.url : primary.url}
@@ -38,6 +51,8 @@ export function ProductCard({ product }: { product: ProductSummary }) {
               className="object-cover transition-transform duration-700 ease-premium group-hover:scale-105"
             />
           )}
+
+          <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-gradient-to-t from-ink/20 via-transparent to-transparent" />
 
           <div className="absolute left-3 top-3 flex flex-col gap-1.5">
             {product.isNewArrival && <Badge kind="new" />}
@@ -83,6 +98,10 @@ export function ProductCard({ product }: { product: ProductSummary }) {
           >
             {outOfStock ? "Sold Out" : "Add to Bag"}
           </button>
+
+          <span className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border border-ivory/70 bg-ink/55 px-4 py-1.5 text-caption uppercase tracking-widest text-ivory opacity-0 transition-all duration-300 group-hover:opacity-100">
+            Quick View
+          </span>
         </div>
 
         <div className="mt-3.5 space-y-1">

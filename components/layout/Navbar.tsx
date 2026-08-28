@@ -1,11 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { primaryNav } from "@/lib/navigation";
 import { MobileMenu } from "@/components/layout/MobileMenu";
 import { useCartStore, cartCount } from "@/lib/store/cart";
 import { useWishlistStore } from "@/lib/store/wishlist";
+import { KONARK_LOGO_ALT, KONARK_LOGO_URL } from "@/lib/branding";
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -27,8 +29,22 @@ export function Navbar() {
           </svg>
         </button>
 
-        <Link href="/" className="font-display text-2xl sm:text-3xl tracking-widest text-ink">
-          KONARK
+        <Link href="/" className="group inline-flex items-center gap-2.5 text-ink">
+          <span className="relative h-10 w-10 overflow-hidden rounded-full border border-gold/40 bg-ink sm:h-11 sm:w-11">
+            <Image
+              src={KONARK_LOGO_URL}
+              alt={KONARK_LOGO_ALT}
+              fill
+              sizes="44px"
+              className="object-cover transition-transform duration-500 ease-premium group-hover:scale-105"
+            />
+          </span>
+          <span className="leading-none">
+            <span className="block font-display text-xl tracking-[0.2em] sm:text-2xl">KONARK</span>
+            <span className="hidden text-[10px] uppercase tracking-[0.22em] text-gold-dark sm:block">
+              Heritage Jewels
+            </span>
+          </span>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-8" aria-label="Primary">

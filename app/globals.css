@@ -48,4 +48,45 @@
       text-button uppercase tracking-wider transition-all duration-300 ease-premium
       hover:border-gold hover:bg-gold hover:text-ink;
   }
+
+  .hero-pan {
+    animation: hero-pan 18s cubic-bezier(0.22, 1, 0.36, 1) infinite alternate;
+    transform-origin: center;
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .animate-fade-up-delay-1 {
+    animation: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) 120ms both;
+  }
+
+  .animate-fade-up-delay-2 {
+    animation: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) 240ms both;
+  }
+
+  .animate-fade-up-delay-3 {
+    animation: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) 360ms both;
+  }
+}
+
+@keyframes hero-pan {
+  from {
+    transform: scale(1.03) translateY(0);
+  }
+  to {
+    transform: scale(1.1) translateY(-1.75%);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

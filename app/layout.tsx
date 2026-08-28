@@ -4,6 +4,7 @@ import "./globals.css";
 import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { KONARK_LOGO_URL } from "@/lib/branding";
 
 const display = Cormorant_Garamond({
   subsets: ["latin"],
@@ -27,12 +28,24 @@ export const metadata: Metadata = {
   },
   description:
     "Fine jewellery inspired by the Sun Temple of Konark — solitaires, chains, bangles and bridal pieces crafted in gold, platinum and diamonds.",
+  icons: {
+    icon: [{ url: KONARK_LOGO_URL }],
+    apple: [{ url: KONARK_LOGO_URL }],
+  },
   openGraph: {
     title: "Konark Jewels | Where Heritage Becomes Jewellery",
     description:
       "Fine jewellery inspired by the Sun Temple of Konark — solitaires, chains, bangles and bridal pieces.",
     siteName: "Konark Jewels",
     type: "website",
+    images: [{ url: KONARK_LOGO_URL, alt: "Konark Jewels logo" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Konark Jewels | Where Heritage Becomes Jewellery",
+    description:
+      "Fine jewellery inspired by the Sun Temple of Konark — solitaires, chains, bangles and bridal pieces.",
+    images: [KONARK_LOGO_URL],
   },
 };
 
