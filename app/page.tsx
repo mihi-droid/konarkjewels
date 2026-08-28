@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { HeroCarousel } from "@/components/home/HeroCarousel";
+import { TestimonialsCarousel } from "@/components/home/TestimonialsCarousel";
 import { ProductCard } from "@/components/product/ProductCard";
 import { mockProducts, categoryShowcase } from "@/lib/data/mock-products";
 
@@ -11,32 +13,7 @@ export default function HomePage() {
 
   return (
     <>
-      {/* HERO */}
-      <section className="relative h-[88vh] min-h-[560px] w-full overflow-hidden bg-ink">
-        <Image
-          src={img("photo-1611591437281-460bfbe1220a")}
-          alt="Gold jewellery on dark stone, Konark heritage collection"
-          fill
-          priority
-          className="object-cover opacity-70"
-        />
-        <div className="relative z-10 flex h-full flex-col items-center justify-center text-center px-6">
-          <span className="eyebrow text-gold">Where Heritage Becomes Jewellery</span>
-          <h1 className="mt-4 font-display text-display text-ivory max-w-3xl">
-            Carved in Stone.<br />Cast in Gold.
-          </h1>
-          <p className="mt-5 max-w-md text-body-lg text-ivory/80">
-            Fine jewellery inspired by the Sun Temple of Konark — hallmarked gold, certified
-            stones, hand-finished detail.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-            <Link href="/shop" className="btn-primary">Shop the Collection</Link>
-            <Link href="/shop?collection=heritage-edit" className="btn-ghost-inverse">
-              Heritage Edit
-            </Link>
-          </div>
-        </div>
-      </section>
+      <HeroCarousel />
 
       {/* CATEGORY SHOWCASE */}
       <section className="container-edge py-16 lg:py-24">
@@ -126,25 +103,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* TESTIMONIALS */}
-      <section className="bg-ink py-16 lg:py-24 text-ivory">
-        <div className="container-edge text-center">
-          <span className="eyebrow text-gold">In Their Words</span>
-          <h2 className="mt-2 font-display text-h2">Customer Stories</h2>
-          <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-3">
-            {[
-              { quote: "The Celeste ring photographs exactly as it looks in hand — rare for online jewellery.", name: "Ananya R." },
-              { quote: "Ordered the Sunwheel bangle for my mother. The detail on the carving is extraordinary.", name: "Devika M." },
-              { quote: "Customer care helped me resize a ring within a week, no questions asked.", name: "Priya S." },
-            ].map((t) => (
-              <blockquote key={t.name} className="border border-ivory/15 p-8">
-                <p className="text-body-lg text-ivory/85">&ldquo;{t.quote}&rdquo;</p>
-                <footer className="mt-4 text-caption uppercase tracking-widest text-gold">{t.name}</footer>
-              </blockquote>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TestimonialsCarousel />
 
       {/* NEWSLETTER */}
       <section className="py-16 lg:py-24">
