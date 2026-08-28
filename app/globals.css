@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-ivory text-text font-body antialiased;
+  }
+  ::selection {
+    @apply bg-gold/30 text-ink;
+  }
+  :focus-visible {
+    outline: 2px solid theme("colors.gold.DEFAULT");
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .container-edge {
+    @apply mx-auto w-full max-w-8xl px-4 sm:px-6 lg:px-10;
+  }
+  .eyebrow {
+    @apply text-caption uppercase tracking-widest text-gold-dark font-medium;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-ink text-ivory px-7 py-3.5
+      text-button uppercase tracking-wider transition-all duration-300 ease-premium
+      hover:bg-gold hover:text-ink disabled:opacity-40 disabled:pointer-events-none;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 border border-ink/70 text-ink px-7 py-3.5
+      text-button uppercase tracking-wider transition-all duration-300 ease-premium
+      hover:border-gold hover:bg-ink hover:text-ivory disabled:opacity-40 disabled:pointer-events-none;
+  }
+  .btn-ghost-inverse {
+    @apply inline-flex items-center justify-center gap-2 border border-ivory/40 text-ivory px-7 py-3.5
+      text-button uppercase tracking-wider transition-all duration-300 ease-premium
+      hover:border-gold hover:bg-gold hover:text-ink;
+  }
+}

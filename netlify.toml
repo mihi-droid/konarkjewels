@@ -1,0 +1,5 @@
+[build]
+  command = "npm install && npm run build"
+
+[build.environment]
+  NEXT_PUBLIC_SITE_URL = "https://earnest-frangollo-a54950.netlify.app"
